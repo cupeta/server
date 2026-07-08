@@ -4,6 +4,7 @@ set -ouex pipefail
 
 # dnf speedup
 sed -i '/^\[main\]/a max_parallel_downloads=10' /etc/dnf/dnf.conf
+
 # set up custom /opt/bin folder for extra apps (non-dnf software,like AppImages)
 mkdir /opt/bin
 # add /opt/bin path to system-wide bashrc and etc/profile
@@ -38,7 +39,7 @@ dnf -y install nwg-look
 
 # DESKTOP APPS
 # terminal
-dnf -y ghostty
+dnf -y install ghostty
 # file manager
 dnf -y install pcmanfm
 # ark for opening archives
