@@ -20,6 +20,7 @@ dnf -y install cifs-utils
 # Tailscale for private vpn
 dnf -y install tailscale
 
+dnf -y yt-dlp
 
 # CODING & DEV TOOLS
 # setup lua (RakuOS seems to force overlay install for luarocks...?)
