@@ -8,8 +8,9 @@ COPY system_files /system_files
 
 FROM ${BASE_IMAGE}
 
+# check latest image digest
 ARG BASE_IMAGE
-RUN echo $BASE_IMAGE
+RUN echo latest digest for image $BASE_IMAGE is: $(skopeo inspect docker://$BASE_IMAGE:latest | jq -r '.Digest')
 
 RUN sed -i 's/^ID=.*/ID=fedora/' /etc/os-release
 ## Other possible base images include:
