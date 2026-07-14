@@ -1,7 +1,7 @@
 #argument for base image --mh
 ARG BASE_IMAGE=quay.io/rakuos/rakuos-base
 
-#argument for tag (e.g :latest , :staging) or digest (@sha256:1234abcd...) --mh
+#argument for image tag (e.g :latest , :staging) or digest (@sha256:1234abcd...) --mh
 #default is ARG TAG_OR_DIGEST=:latest  --mh
 ARG TAG_OR_DIGEST=:latest
 
@@ -10,7 +10,7 @@ FROM scratch AS ctx
 COPY build_files /
 COPY system_files /system_files
 
-FROM ${BASE_IMAGE}
+FROM ${BASE_IMAGE}${TAG_OR_DIGEST}
 
 # check :latest digest of current base image --mh
 ARG BASE_IMAGE
