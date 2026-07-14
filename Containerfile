@@ -4,7 +4,12 @@ COPY build_files /
 COPY system_files /system_files
 
 # Base Image
-FROM quay.io/rakuos/rakuos-base
+ARG BASE_IMAGE=quay.io/rakuos/rakuos-base
+FROM $(BASE_IMAGE)
+
+ARG BASE_IMAGE
+RUN echo $BASE_IMAGE
+
 RUN sed -i 's/^ID=.*/ID=fedora/' /etc/os-release
 ## Other possible base images include:
 # FROM ghcr.io/ublue-os/bazzite:testing
