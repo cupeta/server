@@ -1,4 +1,4 @@
-#argument for Base Image --mh
+#argument for base image --mh
 ARG BASE_IMAGE=quay.io/rakuos/rakuos-base
 
 #argument for tag (e.g :latest , :staging) or digest (@sha256:1234abcd...) --mh
@@ -12,7 +12,7 @@ COPY system_files /system_files
 
 FROM ${BASE_IMAGE}
 
-# check :latest image digest --mh
+# check :latest digest of current base image --mh
 ARG BASE_IMAGE
 RUN echo latest digest for image $BASE_IMAGE is: $(skopeo inspect docker://$BASE_IMAGE:latest | jq -r '.Digest')
 
