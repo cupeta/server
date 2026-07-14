@@ -5,7 +5,7 @@ COPY system_files /system_files
 
 # Base Image
 ARG BASE_IMAGE=quay.io/rakuos/rakuos-base
-FROM $(BASE_IMAGE)
+FROM ${BASE_IMAGE}
 
 ARG BASE_IMAGE
 RUN echo $BASE_IMAGE
