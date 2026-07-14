@@ -1,5 +1,9 @@
-# Base Image
+#argument for Base Image --mh
 ARG BASE_IMAGE=quay.io/rakuos/rakuos-base
+
+#argument for tag (e.g :latest , :staging) or digest (@sha256:1234abcd...) --mh
+#default is ARG TAG_OR_DIGEST=:latest  --mh
+ARG TAG_OR_DIGEST=:latest
 
 # Allow build scripts to be referenced without being copied into the final image
 FROM scratch AS ctx
@@ -8,10 +12,11 @@ COPY system_files /system_files
 
 FROM ${BASE_IMAGE}
 
-# check latest image digest
+# check :latest image digest --mh
 ARG BASE_IMAGE
 RUN echo latest digest for image $BASE_IMAGE is: $(skopeo inspect docker://$BASE_IMAGE:latest | jq -r '.Digest')
 
+#edit os ID to use fedora COPR in dnf,from morrolinux --mh
 RUN sed -i 's/^ID=.*/ID=fedora/' /etc/os-release
 ## Other possible base images include:
 # FROM ghcr.io/ublue-os/bazzite:testing
