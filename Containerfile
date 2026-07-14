@@ -1,10 +1,11 @@
+# Base Image
+ARG BASE_IMAGE=quay.io/rakuos/rakuos-base
+
 # Allow build scripts to be referenced without being copied into the final image
 FROM scratch AS ctx
 COPY build_files /
 COPY system_files /system_files
 
-# Base Image
-ARG BASE_IMAGE=quay.io/rakuos/rakuos-base
 FROM ${BASE_IMAGE}
 
 ARG BASE_IMAGE
